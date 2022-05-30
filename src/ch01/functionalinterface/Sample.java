@@ -3,8 +3,8 @@ package ch01.functionalinterface;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 
-/*
-
+/**
+ * 함수형 인터페이스
  */
 public class Sample {
     public static void main(String[] args) {

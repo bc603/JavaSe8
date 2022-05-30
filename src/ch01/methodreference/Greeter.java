@@ -14,7 +14,7 @@ public class Greeter {
 class ConcurrentGreeter extends Greeter {
     @Override
     public void greet() {
-        // 스레드가 시작할때 해당 스레드의 Runnable이 호출되고 super::greete가 실행된다.
+        // 스레드가 시작할때 해당 스레드의 Runnable이 호출되고 super::greet가 실행된다.
         // 이때 슈퍼클래스의 greet 메서드가 호출된다.
         Thread t = new Thread(super::greet);
         t.start();
