@@ -36,6 +36,18 @@ public class Sample {
                 = (first, second) -> Integer.compare(first.length(), second.length());
         System.out.println(comp.apply("gdoo", "good").toString());
 
-
+        // 검사 예외인 InterruptedException을 던질수 있다
+        // 해결책1. 람다 표현식의 몸체에서 예외를 잡을수 있다.
+        // 해결책2. 해당 예외를 던질 수 있는 단일 추상 메서드를 갖춘 인터페이스에 람다를 대입한다.
+        //         예를 들어 Callable 인터페이스의 call 메서드는 어떤 예외든 던질 수 있다
+        //         따라서 return null을 추가한다면 위의 람다 표현식을 Callable<Void>에 대입할 수 있다.
+        Runnable sleeper = () -> { System.out.println("zzzz");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e); // 람다 표현시그이 몸체에서 예외를 잡는다.
+            }
+        };
+        sleeper.run();
     }
 }
